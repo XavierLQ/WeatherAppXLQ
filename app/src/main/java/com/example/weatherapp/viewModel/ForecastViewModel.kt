@@ -12,6 +12,12 @@ import kotlinx.coroutines.launch
 
 class ForecastViewModel(private val periodList: List<Period>): ViewModel() {
 
+    /**
+     * [ForecastViewModel] along with the liveData [forecastLiveData] are used to handle
+     * configuration change, and communicate between the Data layer and the UI and separate the
+     * concerns.
+     */
+
     private val _forecastLiveData: MutableLiveData<List<Period>> = MutableLiveData()
     val forecastLiveData: LiveData<List<Period>> get() = _forecastLiveData
 

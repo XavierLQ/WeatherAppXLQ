@@ -11,6 +11,11 @@ import org.koin.dsl.module
 import java.io.InputStream
 
 
+/**
+ * Here is implemented the dependency Injection, which handles the [localDataModule] that connects all
+ * the dependecies of the functions in the [LocalData] class.
+ */
+
 val localDataModule = module{
 
     fun getLocalData(): LocalData = LocalDataImpl()

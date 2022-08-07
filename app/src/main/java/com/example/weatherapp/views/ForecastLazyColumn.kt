@@ -13,6 +13,11 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.RectangleShape
 import com.example.weatherapp.model.Period
 
+/**
+ * This composable method handles the List<Periods>, which are each being populated into individual
+ * [PeriodCards].
+ */
+
 @Composable
 fun ForecastLazyColumn(periods: List<Period>){
     LazyColumn(

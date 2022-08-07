@@ -14,6 +14,10 @@ import androidx.compose.ui.unit.dp
 import com.example.weatherapp.model.Period
 
 
+/**
+ * Each [PeriodCard] receives the [period] and displays all of its data in all the Text views.
+ */
+
 @Composable
 fun PeriodCard(period: Period) {
 

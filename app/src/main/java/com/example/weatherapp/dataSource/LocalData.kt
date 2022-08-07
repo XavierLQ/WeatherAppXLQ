@@ -13,6 +13,13 @@ import java.io.InputStreamReader
 
 class LocalDataImpl: LocalData {
 
+    /**
+     * [localDataImpl] is used to hold all the functions that get the raw JSON data [getLocalJsonData],
+     * convert that to POJOs [jsonToPojoConverter] and format by getting the period data [getPeriodData].
+     *
+     * These are sent to ViewModel which handles the communication with UI.
+     */
+
     override fun jsonToPojoConverter(json: InputStream): Forecast {
         val moshi: Moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
         val adapter: JsonAdapter<Forecast> = moshi.adapter(Forecast::class.java)
