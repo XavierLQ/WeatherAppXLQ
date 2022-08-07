@@ -6,8 +6,6 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class Period(
-    @Json(name = "longForecast")
-    val longForecast: String,
     @Json(name = "name")
     val name: String,
     @Json(name = "shortForecast")

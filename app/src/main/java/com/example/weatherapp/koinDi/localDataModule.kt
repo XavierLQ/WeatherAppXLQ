@@ -8,22 +8,23 @@ import com.example.weatherapp.dataSource.LocalDataImpl
 import com.example.weatherapp.model.Forecast
 import com.example.weatherapp.model.Period
 import org.koin.dsl.module
+import java.io.InputStream
 
 
 val localDataModule = module{
 
     fun getLocalData(): LocalData = LocalDataImpl()
 
-    fun provideForecastPOJO(json: JsonReader, localData: LocalData): Forecast =
+    fun provideForecastPOJO(json: InputStream, localData: LocalData): Forecast =
         localData.jsonToPojoConverter(json)
 
-    fun provideLocalJsonData(path: String, context: Context, localData: LocalData):JsonReader =
-        localData.getLocalJsonData(path, context)
+    fun provideLocalJsonData(context: Context, localData: LocalData): InputStream =
+        localData.getLocalJsonData(context)
 
     fun providePeriodData(forecast: Forecast): List<Period> = forecast.periods
 
     single { getLocalData() }
     single { provideForecastPOJO(get(), get()) }
-    single { provideLocalJsonData(get(),get(), get()) }
+    single { provideLocalJsonData(get(),get()) }
     single { providePeriodData(get())}
 }
