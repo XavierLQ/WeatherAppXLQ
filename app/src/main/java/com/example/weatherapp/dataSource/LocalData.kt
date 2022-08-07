@@ -10,21 +10,21 @@ import com.squareup.moshi.Moshi
 import java.io.InputStream
 import java.io.InputStreamReader
 
-class localData {
+class LocalDataImpl: LocalData {
 
-    fun jsonToPojoConverter(json: JsonReader): Forecast? {
+    override fun jsonToPojoConverter(json: JsonReader): Forecast {
         val moshi: Moshi = Moshi.Builder().build()
         val adapter: JsonAdapter<Forecast> = moshi.adapter(Forecast::class.java)
-        return adapter.fromJson(json.toString())
+        return adapter.fromJson(json.toString())!!
     }
 
-    fun getLocalJsonData(path: String, context: Context):JsonReader{
+    override fun getLocalJsonData(path: String, context: Context):JsonReader{
         val input: InputStream = context.resources.openRawResource(R.raw.weather)
         val json = JsonReader(InputStreamReader(input))
         return json
     }
 
-    fun getPeriodData(forecast: Forecast): List<Period>{
+    override fun getPeriodData(forecast: Forecast): List<Period>{
         val periodList: List<Period> = forecast.periods
         return periodList
     }
@@ -32,4 +32,10 @@ class localData {
     companion object{
         const val weatherJsonPath = "weather.json"
     }
+}
+
+interface LocalData{
+    fun getPeriodData(forecast: Forecast): List<Period>
+    fun getLocalJsonData(path: String, context: Context):JsonReader
+    fun jsonToPojoConverter(json: JsonReader): Forecast
 }
