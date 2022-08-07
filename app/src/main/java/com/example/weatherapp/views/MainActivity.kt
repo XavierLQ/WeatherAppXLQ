@@ -1,4 +1,4 @@
-package com.example.weatherapp
+package com.example.weatherapp.views
 
 import android.os.Bundle
 import android.util.JsonReader
@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import java.io.InputStreamReader
 import android.view.View
 import android.widget.ListView
+import com.example.weatherapp.R
 
 
 class MainActivity : AppCompatActivity() {
