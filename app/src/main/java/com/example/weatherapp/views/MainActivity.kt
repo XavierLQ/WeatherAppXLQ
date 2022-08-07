@@ -8,10 +8,13 @@ import java.io.InputStreamReader
 import android.view.View
 import android.widget.ListView
 import com.example.weatherapp.R
+import com.example.weatherapp.viewModel.ForecastViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class MainActivity : AppCompatActivity() {
 
+    private val viewModel: ForecastViewModel by viewModel()
     var output = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
