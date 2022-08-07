@@ -28,10 +28,6 @@ class LocalDataImpl: LocalData {
         val periodList: List<Period> = forecast.periods
         return periodList
     }
-
-    companion object{
-        const val weatherJsonPath = "weather.json"
-    }
 }
 
 interface LocalData{
